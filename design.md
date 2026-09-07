@@ -158,6 +158,12 @@ Font fallback and embedding policy are unresolved. Check actual font rendering o
 
 ## Layout
 
+### Companion Grid System skill
+
+Use the [Layered Grid Design skill](skills/layered-grid-design/SKILL.md) alongside this file when creating or refining assets. It establishes spacing rhythm, safe areas and content groups, structural layout, and typographic hierarchy, then checks the rendered result. This file governs Databricks identity and established rules; the skill supplies the composition method within them.
+
+Preserve the Databricks font families and applicable template geometry. The source recipe's 8px spacing unit and 24px radius/inset are optional working defaults where no governing rule exists, not newly verified brand tokens. Their inclusion does not resolve the omitted global spacing/radius scales in this file. Record format-specific choices and material exceptions in implementation notes. See the [repository usage guide](README.md#build-an-asset) for an example brief.
+
 ### Shared composition logic
 
 **Proposed marketing default:** build each asset around one message, one primary visual and one next action. Align headline, supporting copy and CTA to a common left edge. Group related information and leave visible separation between groups. Allocate a protected logo area using official clear-space guidance. Content density should serve the task; a technical explanation may need more detail than a campaign cover.
