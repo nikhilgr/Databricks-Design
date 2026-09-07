@@ -1,2 +1,2 @@
-# Databricks-Design-MD-
-Design MD spec for databricks
+# Databricks-Design
+Design Framework for databricks Creatives
