@@ -1,0 +1,90 @@
+{
+  "id": "regional-revenue-concept",
+  "fidelity": "concept",
+  "disclosure": "Illustrative data \u00b7 Concept UI",
+  "productSurface": "Genie conversational analytics concept",
+  "question": "How did revenue change by region in Q3 2025 versus Q2?",
+  "metricDefinition": "Sum of net_revenue_usd; USD; calendar quarters; all regions",
+  "periods": {
+    "baseline": {
+      "label": "Q2 2025",
+      "start": "2025-04-01",
+      "endExclusive": "2025-07-01"
+    },
+    "comparison": {
+      "label": "Q3 2025",
+      "start": "2025-07-01",
+      "endExclusive": "2025-10-01"
+    }
+  },
+  "rows": [
+    {
+      "region": "EMEA",
+      "q2Revenue": 3000000,
+      "q3Revenue": 4000000,
+      "delta": 1000000,
+      "growthPct": 33.33
+    },
+    {
+      "region": "Americas",
+      "q2Revenue": 5000000,
+      "q3Revenue": 5500000,
+      "delta": 500000,
+      "growthPct": 10.0
+    },
+    {
+      "region": "APAC",
+      "q2Revenue": 2000000,
+      "q3Revenue": 2300000,
+      "delta": 300000,
+      "growthPct": 15.0
+    }
+  ],
+  "total": {
+    "q2Revenue": 10000000,
+    "q3Revenue": 11800000,
+    "delta": 1800000,
+    "growthPct": 18
+  },
+  "answer": "Revenue grew 18% quarter over quarter. EMEA contributed $1.0M of the $1.8M increase.",
+  "evidence": [
+    {
+      "id": "demo-orders",
+      "label": "demo.sales.orders (fictional)",
+      "kind": "illustrative-table",
+      "href": null
+    }
+  ],
+  "verification": null,
+  "sql": "WITH regional AS (\n  SELECT region,\n    SUM(CASE WHEN order_date >= DATE '2025-04-01' AND order_date < DATE '2025-07-01' THEN net_revenue_usd ELSE 0 END) AS q2_revenue,\n    SUM(CASE WHEN order_date >= DATE '2025-07-01' AND order_date < DATE '2025-10-01' THEN net_revenue_usd ELSE 0 END) AS q3_revenue\n  FROM demo.sales.orders\n  WHERE order_date >= DATE '2025-04-01' AND order_date < DATE '2025-10-01'\n  GROUP BY region\n)\nSELECT region, q2_revenue, q3_revenue,\n  q3_revenue - q2_revenue AS delta,\n  ROUND(100.0 * (q3_revenue - q2_revenue) / NULLIF(q2_revenue, 0), 2) AS growth_pct\nFROM regional\nORDER BY delta DESC;",
+  "followUp": "Break down EMEA growth by product.",
+  "followUpBehavior": "No product-level fixture is included. Show an explicit demo limitation or supply additional consistent sample data.",
+  "timeline": [
+    {
+      "start": 0,
+      "end": 3,
+      "state": "question"
+    },
+    {
+      "start": 3,
+      "end": 6,
+      "state": "running",
+      "label": "Running query \u00b7 simulated"
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "state": "success"
+    },
+    {
+      "start": 12,
+      "end": 16,
+      "state": "evidence-expanded"
+    },
+    {
+      "start": 16,
+      "end": 20,
+      "state": "follow-up-ready"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+/* Original proposal informed by semantic component patterns. Not official Beautiful UI or Genie CSS. */
+.ai-native {
+  --ai-page:#f5f6f8; --ai-surface:#ffffff; --ai-inset:#eef0f3;
+  --ai-ink:#202630; --ai-secondary:#526071; --ai-line:#d7dce2;
+  --ai-accent:#245fbd; --ai-action:#202630; --ai-on-action:#ffffff;
+  --ai-success:#166534; --ai-error:#b42318;
+  --ai-font:system-ui,sans-serif; --ai-mono:ui-monospace,monospace;
+  --ai-radius-chip:6px; --ai-radius-control:8px; --ai-radius-card:10px; --ai-radius-window:14px;
+  --ai-space-1:4px; --ai-space-2:8px; --ai-space-3:12px; --ai-space-4:16px; --ai-space-6:24px;
+  --ai-shadow:0 1px 2px #00000008,0 8px 24px #00000008;
+  --ai-ease:cubic-bezier(.23,1,.32,1); --ai-fast:140ms; --ai-reveal:240ms;
+  color:var(--ai-ink); background:var(--ai-page); font-family:var(--ai-font);
+}
+.ai-native[data-theme="dark"] {
+  --ai-page:#171a20; --ai-surface:#232831; --ai-inset:#1c2027;
+  --ai-ink:#f5f6f8; --ai-secondary:#b5bfcc; --ai-line:#526071;
+  --ai-accent:#91bbff; --ai-action:#f5f6f8; --ai-on-action:#202630;
+  --ai-success:#86d9a0; --ai-error:#ffb4aa;
+}
+/* Marketing/concept adaptation. Use host product tokens for authentic Genie UI. */
+.ai-native[data-profile="databricks"] {
+  --ai-page:#f9f7f4; --ai-surface:#ffffff; --ai-inset:#eeede9;
+  --ai-ink:#0b2026; --ai-secondary:#5a6f77; --ai-line:#dce0e2;
+  --ai-accent:#0e538b; --ai-brand:#ff3621;
+  --ai-action:#0b2026; --ai-on-action:#ffffff;
+  --ai-font:"DM Sans",system-ui,sans-serif; --ai-mono:"DM Mono",ui-monospace,monospace;
+}
+.ai-native[data-profile="databricks"][data-theme="dark"] {
+  --ai-page:#0b2026; --ai-surface:#1b3139; --ai-inset:#14303a;
+  --ai-ink:#ffffff; --ai-secondary:#c4ccd6; --ai-line:#618794;
+  --ai-accent:#8acaff; --ai-action:#ffffff; --ai-on-action:#0b2026;
+}
+.ai-native :focus-visible {outline:2px solid var(--ai-accent);outline-offset:3px}
+.ai-native .ai-numeric {font-variant-numeric:tabular-nums}
+.ai-native .ai-code {font-family:var(--ai-mono)}
+@media(prefers-reduced-motion:reduce) {
+  .ai-native {--ai-fast:0ms;--ai-reveal:0ms;scroll-behavior:auto}
+  .ai-native *, .ai-native *::before, .ai-native *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

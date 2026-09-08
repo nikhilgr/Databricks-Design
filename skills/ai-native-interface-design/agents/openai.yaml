@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI-Native Interface Design"
+  short_description: "Design AI artifacts, images, creatives and demo scenes"
+  default_prompt: "Use $ai-native-interface-design to create a polished Databricks Genie concept with a clear question, evidence-backed result, and useful follow-up."
